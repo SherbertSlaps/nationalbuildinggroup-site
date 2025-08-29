@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Steel Building Division — National Building Group</title>
+  <meta name="description" content="National Building Group Inc. — Fabric, Steel & Metal Building Construction Contractors for agriculture, recreation, storage, warehousing, commercial, industrial and more.">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f7f8fb;
+      --card:#fff;
+      --muted:#6b7280;
+      --accent:#0066cc;
+      --accent-600:#0052a3;
+      --container:1200px;
+      --radius:12px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Inter","PT Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+      background:var(--bg);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%;height:auto}
+
+    .wrap{width:90%;max-width:var(--container);margin:0 auto;padding:0 12px}
+
+    /* Header */
+    .site-header{position:sticky;top:0;background:linear-gradient(180deg,#fff,#fbfdff);border-bottom:1px solid rgba(15,23,42,.04);z-index:60;backdrop-filter:blur(4px)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px}
+    #logo img{height:52px}
+    nav.primary{display:flex;gap:16px;align-items:center}
+    nav.primary a{padding:8px 10px;border-radius:8px;font-weight:600;color:#0f172a}
+    nav.primary a:hover{background:rgba(0,102,204,.06);color:var(--accent-600)}
+
+    .actions{display:flex;gap:12px;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:8px;font-weight:600;cursor:pointer}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-primary:hover{background:var(--accent-600)}
+    .btn-ghost{background:transparent;border:1px solid rgba(2,6,23,.06);color:var(--muted)}
+
+    /* Mobile menu */
+    .mobile-toggle{display:none}
+    .hamburger{display:none;width:44px;height:44px;border-radius:8px;align-items:center;justify-content:center;background:transparent;border:1px solid rgba(2,6,23,.04);cursor:pointer}
+    .mobile-nav{display:none;position:absolute;inset:64px 18px auto 18px;background:var(--card);border-radius:12px;box-shadow:0 12px 40px rgba(2,6,23,.12);padding:12px}
+    .mobile-toggle:checked + .hamburger + .mobile-nav{display:block}
+    .mobile-nav a{display:block;padding:10px;border-radius:8px;font-weight:600}
+    .mobile-nav a:hover{background:rgba(0,102,204,.06)}
+
+    /* Hero */
+    .hero{position:relative;min-height:44vh;background-image:url('img/index/steel1adj.jpg');background-size:cover;background-position:center;display:flex;align-items:center}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(1,5,16,.45), rgba(1,5,16,.38));z-index:0}
+    .hero-inner{position:relative;z-index:2;padding:48px 18px;text-align:center;color:#fff;max-width:920px;margin:0 auto}
+    .hero h1{margin:0 0 12px;font-size:clamp(24px,4vw,40px);line-height:1.03}
+    .hero p{margin:0 0 18px;color:rgba(255,255,255,.95)}
+
+    /* Content */
+    .content{padding:36px 0}
+    .highlightBox{background:linear-gradient(90deg,#fff,#fbfdff);border-left:4px solid var(--accent);padding:14px;border-radius:8px;box-shadow:0 8px 18px rgba(2,6,23,.04);margin-bottom:18px}
+    .cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .cols ul{margin:0;padding-left:18px}
+    .section-img{float:right;margin-left:18px;max-width:220px;border-radius:8px}
+    p{margin:0 0 14px;color:#1f2937;line-height:1.6}
+
+    .servRow{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px}
+    .servBox{flex:1 1 220px;background:var(--card);border-radius:12px;padding:20px;text-align:center;box-shadow:0 8px 20px rgba(2,6,23,.04);transition:transform .22s,box-shadow .22s}
+    .servBox:hover{transform:translateY(-6px);box-shadow:0 18px 44px rgba(2,6,23,.08)}
+    .servBox .servTitle{font-weight:700}
+
+    .env-img{max-width:240px;border-radius:8px;float:right;margin-left:16px}
+
+    /* Footer */
+    footer.site-footer{background:#0b1220;color:rgba(255,255,255,.9);padding:28px 0;text-align:center;margin-top:28px}
+    footer a{color:inherit}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .cols{grid-template-columns:1fr}
+      .section-img{float:none;margin:0 0 12px;max-width:100%}
+    }
+    @media (max-width:720px){
+      nav.primary{display:none}
+      .hamburger{display:flex}
+      .mobile-toggle{display:block}
+      #logo img{height:46px}
+      .hero{min-height:36vh}
+    }
+
+    /* small helpers */
+    .muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header" id="top">
+    <div class="wrap header-inner">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div id="logo"><a href="index.html"><img src="img/index/blacklogoNBG.png" alt="National Building Group"></a></div>
+        <nav class="primary" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="steelabout.html" class="active">Steel Building</a>
+          <a href="fabricabout.html">Fabric Building</a>
+          <a href="contact.html#contactLink">Contact</a>
+        </nav>
+      </div>
+
+      <div class="actions">
+        <a class="btn btn-ghost" href="https://weblink.easylease.ca/en/A50F74680167F1698B7A/lead" target="_blank" rel="noopener">Financing Available</a>
+        <a class="btn btn-primary" href="contact.html#contactLink">Request a Quote</a>
+
+        <!-- mobile toggle -->
+        <input id="mobile-toggle" class="mobile-toggle" type="checkbox" aria-hidden="true" />
+        <label for="mobile-toggle" class="hamburger" aria-hidden="true" title="Open menu">
+          <svg width="18" height="14" viewBox="0 0 18 14" xmlns="http://www.w3.org/2000/svg"><rect width="18" height="2" rx="1" fill="#0f172a"/><rect y="6" width="18" height="2" rx="1" fill="#0f172a"/><rect y="12" width="18" height="2" rx="1" fill="#0f172a"/></svg>
+        </label>
+
+        <nav class="mobile-nav" aria-label="Mobile navigation">
+          <a href="index.html">Home</a>
+          <a href="steelabout.html">Steel Building</a>
+          <a href="fabricabout.html">Fabric Building</a>
+          <a href="contact.html#contactLink">Contact</a>
+          <div style="margin-top:8px"><a class="btn btn-primary" href="contact.html#contactLink">Request a Quote</a></div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="hero" role="banner" aria-label="Steel buildings overview">
+      <div class="hero-inner wrap">
+        <h1>Steel Building Division</h1>
+        <p>We are an industry leader in pre-engineered Steel Building Construction. From supply-only kits to fully installed turn-key projects — customized to meet your needs with efficient delivery and strong warranties.</p>
+        <div style="margin-top:18px">
+          <a class="btn btn-primary" href="contact.html#contactLink">Request a Quote</a>
+          <a class="btn btn-ghost" href="steelagriculture.html" style="margin-left:10px">Explore Agricultural</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="content wrap">
+      <div class="highlightBox">
+        <h4>Committed to Excellence in Product &amp; Service</h4>
+        <p>National Building Group Inc. is a premier metal building supply company committed to providing top-quality customer-engineered metal buildings. These buildings meet design specifications, perform reliably, and look great for decades to come.</p>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start">
+        <div style="flex:1;min-width:300px">
+          <p><img class="section-img" src="img/40-year-warranty.png" alt="40 year warranty" />At National Building Group Inc., we take pride in being an industry leader in pre-engineered Steel Building Construction. We service agricultural, commercial, industrial and recreational markets. Our buildings are fully customizable — options include mezzanines, heated floors, ventilation, doors, overhangs and more.</p>
+
+          <div class="cols" style="margin-top:10px">
+            <div>
+              <div class="highlightBox">
+                <h5>NBGI Steel Building Advantages</h5>
+                <ul>
+                  <li>Premium gray primer on main frames for a contemporary look. Optional hot-dip galvanized or red-oxide primer available.</li>
+                  <li>Optional Hot-Dip Galvanized components.</li>
+                  <li>Rust-resistant galvanized door jambs with extended salt-spray life (ASTM B-117).</li>
+                  <li>In-house certified welding inspector — commitment to quality.</li>
+                  <li>Roof and wall panels feature long-life finishes with up to 40-year warranties (color dependent).</li>
+                  <li>Purlin Bearing Rib (PBR) panels for stronger, weather-tight fit. Optional standing-seam roof.</li>
+                  <li>Galvanized purlins, girts and door framing.</li>
+                  <li>Anchor bolt and building drawings ready in 7 days.</li>
+                  <li>Building delivery in 4–6 weeks.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div>
+              <p>With over 15 years of service, our team guides customers from concept to completion. We design and deliver straight from factory to site, using modern manufacturing and delivery workflows to save time and money. Whether a small garage or a large super-span hangar, our pre-engineered systems scale to meet your needs.</p>
+            </div>
+          </div>
+
+          <h2 style="margin-top:20px">Total Project Management</h2>
+          <p>We offer consultation, custom design, manufacture, delivery and erection. We can also assist with building permits through our engineering and architectural partners — reducing friction for clients and accelerating project timelines.</p>
+
+          <h2 style="margin-top:20px">Environmentally-Friendly Steel Buildings</h2>
+          <p style="clear: both"><img class="env-img" src="img/environmental.png" alt="Environmental" />We prioritize energy efficiency with high-quality insulation, reflective panel colors, and recycled/recyclable steel.</p>
+        </div>
+
+        <aside style="width:320px;flex-shrink:0">
+          <div class="servBox" style="padding:18px">
+            <h4 style="margin-top:0">Learn More — Choose Your Industry</h4>
+            <div class="servRow" style="margin-top:12px">
+              <a href="steelagriculture.html" class="servBox" style="padding:14px;text-align:center"><div class="servTitle">Agricultural</div></a>
+              <a href="steelindustrial.html" class="servBox" style="padding:14px;text-align:center"><div class="servTitle">Commercial</div></a>
+            </div>
+
+            <div style="margin-top:14px">
+              <a class="btn btn-primary" href="contact.html#contactLink">Request a Quote</a>
+              <a class="btn btn-ghost" href="tel:1.844.937.6244" style="margin-left:10px">Call Now</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div id="lowerSection" style="margin-top:26px">
+        <!-- previously-loaded content (lowerText.html) can be inlined here if desired -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:center">
+        <div style="max-width:220px"><img src="img/index/blacklogoNBG.png" alt="NBG logo" style="width:100%"></div>
+        <div class="muted">sales@nbgi.ca · 1.844.YES.NBGI / 1.844.937.6244</div>
+        <div class="muted">© 2025 National Building Group. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

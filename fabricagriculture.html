@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fabric Buildings for Agriculture & Equestrian | National Building Group</title>
+  <meta name="description" content="Specialized fabric buildings for agricultural and equestrian use. Durable, cost-effective solutions for farming, livestock, and equestrian facilities.">
+  <link rel="icon" href="img/favicon.png" type="image/png">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Reused from index.html with enhancements */
+    :root {
+      --bg: #f7f8fb;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent: #0066cc;
+      --accent-600: #0052a3;
+      --green: #2e7d32;
+      --green-light: #4caf50;
+      --brown: #5d4037;
+      --brown-light: #8d6e63;
+      --glass: rgba(255,255,255,0.72);
+      --radius: 10px;
+      --container: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", "PT Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: var(--bg);
+      color: #111827;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-600);
+      text-decoration: underline;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .wrap {
+      width: 90%;
+      max-width: var(--container);
+      margin: 0 auto;
+    }
+
+    /* Header - Same as index.html */
+    header.site-header {
+      background: linear-gradient(180deg,#fff, #fbfdff);
+      border-bottom: 1px solid rgba(15,23,42,0.04);
+      position: sticky;
+      top: 0;
+      z-index: 70;
+      backdrop-filter: saturate(120%) blur(4px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 0;
+    }
+
+    #logo img {
+      height: 52px;
+      width: auto;
+      display: block;
+    }
+
+    nav.primary {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      margin-left: 12px;
+    }
+
+    nav.primary a {
+      font-weight: 600;
+      color: #0f172a;
+      padding: 8px 10px;
+      border-radius: 8px;
+    }
+
+    nav.primary a:hover {
+      background: rgba(0,102,204,0.06);
+      color: var(--accent-600);
+      text-decoration: none;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(3,105,197,0.18);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-600);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid rgba(2,6,23,0.06);
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(0,102,204,0.2);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .btn-green {
+      background: var(--green);
+      color: #fff;
+    }
+
+    .btn-green:hover {
+      background: var(--green-light);
+      color: #fff;
+    }
+
+    .phone-link {
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    /* Mobile menu */
+    .mobile-toggle {
+      display: none;
+    }
+
+    .hamburger {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: 1px solid rgba(2,6,23,0.04);
+      cursor: pointer;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: absolute;
+      inset: 64px 18px auto 18px;
+      background: var(--card);
+      border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(2,6,23,0.12);
+      padding: 12px;
+      z-index: 60;
+    }
+
+    .mobile-toggle:checked + .hamburger + .mobile-nav {
+      display: block;
+    }
+
+    .mobile-nav a {
+      display: block;
+      padding: 10px;
+      border-radius: 8px;
+      color: #0f172a;
+      font-weight: 600;
+    }
+
+    .mobile-nav a:hover {
+      background: rgba(0,102,204,0.06);
+      color: var(--accent-600);
+      text-decoration: none;
+    }
+
+    /* Hero section */
+    .hero {
+      position: relative;
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      background-image: url('img/fabric1adj.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(1,5,16,0.45), rgba(1,5,16,0.38));
+      z-index: 0;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      padding: 64px 18px;
+      max-width: 1060px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      margin: 0 0 12px;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    .hero p {
+      margin: 0 0 18px;
+      color: rgba(255,255,255,0.92);
+      font-size: 1.15rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Content sections */
+    .section {
+      padding: 60px 0;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: #0f172a;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: 0 8px 20px rgba(2,6,23,0.04);
+      margin-bottom: 24px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .feature-icon {
+      flex: 0 0 48px;
+      height: 48px;
+      background: rgba(0,102,204,0.08);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1.5rem;
+    }
+
+    /* Gallery grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+
+    .gallery-item {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      height: 240px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Applications section */
+    .applications {
+      background: var(--bg);
+      padding: 60px 0;
+    }
+
+    .applications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .application-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 8px 20px rgba(2,6,23,0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-top: 4px solid var(--green);
+    }
+
+    .application-card.equestrian {
+      border-top-color: var(--brown);
+    }
+
+    .application-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 18px 40px rgba(2,6,23,0.08);
+    }
+
+    .application-card h4 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+
+    .application-card ul {
+      padding-left: 20px;
+      margin-bottom: 0;
+    }
+
+    .application-card li {
+      margin-bottom: 8px;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(120deg, var(--accent), #004a99);
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+      border-radius: var(--radius);
+      margin: 60px auto;
+      max-width: 1000px;
+    }
+
+    .cta-section h2 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .cta-section p {
+      max-width: 700px;
+      margin: 0 auto 24px;
+      opacity: 0.9;
+    }
+
+    /* Benefits section */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .benefit-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 8px 20px rgba(2,6,23,0.04);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .benefit-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      color: var(--green);
+    }
+
+    /* Footer - Same as index.html */
+    footer.site-footer {
+      background: #0b1220;
+      color: rgba(255,255,255,0.9);
+      padding: 28px 0;
+      text-align: center;
+    }
+
+    footer a {
+      color: inherit;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      .applications-grid, .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      nav.primary {
+        display: none;
+      }
+      
+      .hamburger {
+        display: flex;
+      }
+      
+      .mobile-toggle {
+        display: block;
+      }
+      
+      .hero {
+        min-height: 40vh;
+      }
+      
+      #logo img {
+        height: 46px;
+      }
+      
+      .phone-link {
+        display: none;
+      }
+      
+      .features-grid,
+      .applications-grid,
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header" id="top">
+    <div class="wrap header-inner">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <div id="logo"><a href="index.html"><img src="img/blacklogoNBG.png" alt="National Building Group logo"></a></div>
+        <nav class="primary" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="steelabout.html">Steel Building</a>
+          <a href="fabricabout.html" style="background: rgba(0,102,204,0.06); color: var(--accent);">Fabric Building</a>
+          <a href="http://www.fabricbuildingcover.com/" target="_blank" rel="noopener">Recover</a>
+          <a href="contact.html#contactLink">Contact</a>
+        </nav>
+      </div>
+
+      <div class="actions" role="navigation" aria-label="Action links">
+        <a href="https://weblink.easylease.ca/en/A50F74680167F1698B7A/lead" target="_blank" class="btn btn-ghost">Financing Available</a>
+        <a href="contact.html#contactLink" class="btn btn-primary">Request a Quote</a>
+        <a href="tel:1.844.937.6244" class="phone-link">1.844.937.6244</a>
+
+        <!-- Mobile toggle -->
+        <input id="mobile-toggle" class="mobile-toggle" type="checkbox" aria-hidden="true" />
+        <label for="mobile-toggle" class="hamburger" aria-hidden="true" title="Open menu">
+          <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="18" height="2" rx="1" fill="#0f172a"/>
+            <rect y="6" width="18" height="2" rx="1" fill="#0f172a"/>
+            <rect y="12" width="18" height="2" rx="1" fill="#0f172a"/>
+          </svg>
+        </label>
+
+        <!-- Mobile nav panel -->
+        <nav class="mobile-nav" aria-label="Mobile navigation">
+          <a href="index.html">Home</a>
+          <a href="steelabout.html">Steel Building</a>
+          <a href="fabricabout.html" style="background: rgba(0,102,204,0.06); color: var(--accent);">Fabric Building</a>
+          <a href="http://www.fabricbuildingcover.com/" target="_blank" rel="noopener">Recover</a>
+          <a href="contact.html#contactLink">Contact</a>
+          <a href="contact.html#contactLink" class="btn btn-primary" style="margin-top:10px; display:block;">Request a Quote</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" role="banner" aria-label="Agricultural Fabric Buildings" style="background-image: url('img/10FabAg.jpg');">
+    <div class="hero-inner wrap">
+      <h1>Fabric Buildings for Agriculture & Equestrian</h1>
+      <p>Durable, cost-effective solutions designed for farming, livestock, and equestrian facilities</p>
+      <div style="margin-top: 48px;">
+        <a class="btn btn-green" href="contact.html#contactLink">Request a Custom Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="wrap">
+    <!-- Features Section -->
+    <section class="section" aria-labelledby="features-title">
+      <div class="card">
+        <h2 id="features-title" class="section-title">Superior Fabric Structures</h2>
+        <p>National Building Group partners with industry leader Calhoun to deliver innovative fabric building solutions that exceed industry standards. Our structures feature unique profiles, hot-dipped galvanization, and advanced engineering for unmatched durability.</p>
+        
+        <div class="features-grid">
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <div>
+              <h3>Advanced Engineering</h3>
+              <p>3D Finite Element Non-Linear Analysis ensures structural integrity against snow, rain, wind, and seismic conditions specific to your location.</p>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <div>
+              <h3>Hot-Dipped Galvanization</h3>
+              <p>Full HDG protection creates a coating harder than base steel with 4x the protection of standard galvanizing.</p>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <div>
+              <h3>Clear Span Design</h3>
+              <p>Barrier-free interiors up to 200 feet provide maximum space utilization for equipment and livestock movement.</p>
+            </div>
+          </div>
+          
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <div>
+              <h3>Natural Environment</h3>
+              <p>Optimal light diffusion and ventilation create comfortable spaces that reduce animal stress and energy costs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section" aria-labelledby="benefits-title">
+      <h2 id="benefits-title" class="section-title">Agricultural Benefits</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">💰</div>
+          <h3>Cost Efficiency</h3>
+          <p>Lower initial investment and reduced maintenance costs compared to traditional structures.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">⚡</div>
+          <h3>Quick Installation</h3>
+          <p>Faster construction minimizes disruption to your farming operations.</p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon">🌿</div>
+          <h3>Animal Health</h3>
+          <p>Natural light and airflow reduce stress and improve livestock well-being.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Applications Section -->
+    <section class="applications" aria-labelledby="applications-title">
+      <div class="wrap">
+        <h2 id="applications-title" class="section-title">Agricultural Applications</h2>
+        <p>Our fabric buildings provide ideal solutions for diverse agricultural and equestrian needs:</p>
+        
+        <div class="applications-grid">
+          <div class="application-card">
+            <h4>Crop & Feed Storage</h4>
+            <ul>
+              <li>Hay storage facilities</li>
+              <li>Grain storage buildings</li>
+              <li>Straw storage solutions</li>
+              <li>Bulk feed storage</li>
+            </ul>
+          </div>
+          
+          <div class="application-card">
+            <h4>Livestock Housing</h4>
+            <ul>
+              <li>Dairy barns and facilities</li>
+              <li>Cattle shelters</li>
+              <li>Sheep and goat housing</li>
+              <li>Poultry buildings</li>
+            </ul>
+          </div>
+          
+          <div class="application-card">
+            <h4>Equipment Storage</h4>
+            <ul>
+              <li>Tractor storage buildings</li>
+              <li>Combine shelters</li>
+              <li>Farm machinery storage</li>
+              <li>Workshop spaces</li>
+            </ul>
+          </div>
+          
+          <div class="application-card equestrian">
+            <h4>Equestrian Facilities</h4>
+            <ul>
+              <li>Riding arenas</li>
+              <li>Horse stables</li>
+              <li>Training facilities</li>
+              <li>Boarding barns</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section" aria-labelledby="gallery-title">
+      <h2 id="gallery-title" class="section-title">Fabric Buildings in Action</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="img/1FabAg.jpg" alt="Fabric building for hay storage">
+        </div>
+        <div class="gallery-item">
+          <img src="img/2FabAg.jpg" alt="Agricultural fabric building exterior">
+        </div>
+        <div class="gallery-item">
+          <img src="img/3FabAg.jpg" alt="Livestock shelter fabric building">
+        </div>
+        <div class="gallery-item">
+          <img src="img/4FabAg.jpg" alt="Equestrian arena fabric structure">
+        </div>
+        <div class="gallery-item">
+          <img src="img/5FabAg.jpg" alt="Farm equipment storage building">
+        </div>
+        <div class="gallery-item">
+          <img src="img/6FabAg.jpg" alt="Large-scale agricultural fabric building">
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 24px;">
+        <a href="https://photos.app.goo.gl/CAoaZHFss2mZ2ZLE9" target="_blank" class="btn btn-ghost">View Full Gallery</a>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" aria-label="Call to action">
+      <div class="wrap">
+        <h2>Ready to Enhance Your Agricultural Operations?</h2>
+        <p>Our team will design a custom fabric building solution tailored to your specific farming or equestrian needs.</p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a class="btn btn-primary" href="contact.html#contactLink" style="background: white; color: var(--accent);">Request a Quote</a>
+          <a class="btn btn-ghost" href="tel:1.844.937.6244" style="color: white; border-color: rgba(255,255,255,0.3);">Call Now: 1.844.937.6244</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div style="display:flex; flex-direction:column; gap:8px; align-items:center">
+        <div style="max-width:220px"><img src="img/blacklogoNBG.png" alt="NBG logo" style="width:100%"></div>
+        <div class="muted">sales@nbgi.ca · 1.844.YES.NBGI / 1.844.937.6244</div>
+        <div class="muted">Serving Ontario — Niagara Falls, St. Catharines, Pelham, Fonthill, Welland, Grimsby, Muskoka and more.</div>
+        <div style="margin-top:8px; color:rgba(255,255,255,0.7)">© 2025 National Building Group. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
