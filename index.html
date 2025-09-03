@@ -145,18 +145,55 @@
       100%{transform:translateX(-50%)}
     }
 
-    /* Services */
+    /* Services: centered layout with image buttons and centered overlay text */
     .services{padding:42px 0 56px}
-    .services-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch}
+    .services-grid{
+      display:flex;
+      gap:20px;
+      justify-content:center; /* centers the buttons horizontally */
+      align-items:stretch;
+      flex-wrap:wrap;
+    }
     .service{
       background:var(--card);
-      border-radius:12px; padding:28px; text-align:center; display:flex; align-items:center; justify-content:center;
+      border-radius:12px;
+      padding:0;
+      text-align:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       transition:transform .28s ease, box-shadow .28s ease;
       box-shadow:0 8px 20px rgba(2,6,23,0.04);
-      aspect-ratio: 1 / 1;
+      width:320px;           /* fixed card width for consistent sizing */
+      max-width:40%;
+      aspect-ratio: 1 / 1;   /* keeps a square card */
+      overflow:hidden;
+      position:relative;     /* needed for overlay text positioning */
     }
     .service:hover{transform:translateY(-8px); box-shadow:0 18px 40px rgba(2,6,23,0.08)}
-    .service .title{font-weight:700; font-size:1.05rem; color:#0f172a}
+    .service img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .36s ease}
+    .service:hover img{transform:scale(1.03)}
+
+    /* centered overlay label (readable on any image) */
+    .service .label{
+      position:absolute;
+      inset:0; /* fill the card */
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      pointer-events:none; /* allow clicks to pass to anchor */
+    }
+    .service .label .pill{
+      background:rgba(0,0,0,0.56);
+      color:#fff;
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:700;
+      font-size:1.02rem;
+      text-align:center;
+      max-width:90%;
+      box-shadow:0 6px 20px rgba(2,6,23,0.25);
+    }
 
     /* Footer */
     footer.site-footer{background:#0b1220; color:rgba(255,255,255,0.9); padding:28px 0; text-align:center}
@@ -164,7 +201,7 @@
 
     /* Responsive */
     @media (max-width: 960px){
-      .services-grid{grid-template-columns:repeat(2, 1fr)}
+      .service{width:44%; max-width:44%}
       .scroller-track img{height:100px}
       .header-inner{padding:12px 0}
     }
@@ -174,10 +211,12 @@
       .mobile-toggle{display:block}
       .header-inner{gap:12px}
       .hero{min-height:56vh}
-      .services-grid{grid-template-columns:1fr}
+      .services-grid{gap:16px}
+      .service{width:100%; max-width:100%} /* stack full width on small screens */
       #logo img{height:46px}
       .scroller-track img{height:86px}
       .phone-link{display:none}
+      .service .label .pill{font-size:1rem; padding:8px 12px}
     }
 
     /* Mobile menu panel (visible when checkbox checked) */
@@ -209,7 +248,7 @@
   <header class="site-header" id="top">
     <div class="wrap header-inner">
       <div style="display:flex; align-items:center; gap:14px;">
-        <div id="logo"><a href="index.html"><img src="img/index/blacklogoNBG.png" alt="National Building Group logo"></a></div>
+        <div id="logo"><a href="index.html"><img src="img/blacklogoNBG.png" alt="National Building Group logo"></a></div>
 
         <!-- primary nav -->
         <nav class="primary" aria-label="Primary navigation">
@@ -268,7 +307,7 @@
     <section class="scroller-wrap">
       <div class="wrap scroller">
         <div class="scroller-track" aria-hidden="true">
-          <!-- original set -->
+          <!-- original set (kept as-is) -->
           <img src="img/index/recover1adj.jpg" alt="Recover 1" loading="lazy">
           <img src="img/index/steel1adj.jpg" alt="Steel 1" loading="lazy">
           <img src="img/index/fabric1adj.jpg" alt="Fabric 1" loading="lazy">
@@ -295,16 +334,20 @@
       </div>
 
       <div class="services-grid">
-        <a href="steelabout.html" class="service" title="Steel Building - Learn more">
-          <div class="title">Steel Building</div>
+        <!-- Steel Image Button (path points to img/ folder) -->
+        <a href="steelabout.html" class="service" title="Steel Building - Learn more" aria-label="Steel Building">
+          <img src="img/stAg1.jpg" alt="Steel Building">
+          <div class="label" aria-hidden="true">
+            <div class="pill">Steel Building</div>
+          </div>
         </a>
 
-        <a href="fabricabout.html" class="service" title="Fabric Building - Learn more">
-          <div class="title">Fabric Building</div>
-        </a>
-
-        <a href="http://www.fabricbuildingcover.com/" class="service" target="_blank" rel="noopener" title="Recover - External">
-          <div class="title">Recover</div>
+        <!-- Fabric Image Button (path points to img/ folder) -->
+        <a href="fabricabout.html" class="service" title="Fabric Building - Learn more" aria-label="Fabric Building">
+          <img src="img/1FabAg.jpg" alt="Fabric Building">
+          <div class="label" aria-hidden="true">
+            <div class="pill">Fabric Building</div>
+          </div>
         </a>
       </div>
     </section>
@@ -314,7 +357,7 @@
   <footer class="site-footer">
     <div class="wrap">
       <div style="display:flex; flex-direction:column; gap:8px; align-items:center">
-        <div style="max-width:220px"><img src="img/index/blacklogoNBG.png" alt="NBG logo" style="width:100%"></div>
+        <div style="max-width:220px"><img src="img/blacklogoNBG.png" alt="NBG logo" style="width:100%"></div>
         <div class="muted">sales@nbgi.ca · 1.844.YES.NBGI / 1.844.937.6244</div>
         <div class="muted">Serving Ontario — Niagara Falls, St. Catharines, Pelham, Fonthill, Welland, Grimsby, Muskoka and more.</div>
         <div style="margin-top:8px; color:rgba(255,255,255,0.7)">© <span id="year">2025</span> National Building Group. All rights reserved.</div>
